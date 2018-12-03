@@ -12,7 +12,7 @@ jobs:
           name: deploy api
           command: |
             cd api
-            now --token $ZEIT_TOKEN -e POSTGRES_URI=@postgres-uri -e JWT_SECRET=@jwt-secret
+            now --docker --token $ZEIT_TOKEN -e POSTGRES_URI=@postgres-uri -e JWT_SECRET=@jwt-secret
             now alias
             cd ..
       - run:
