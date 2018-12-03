@@ -1,0 +1,32 @@
+version: 2
+jobs:
+  deploy:
+    docker:
+      - image: circleci/node:8.10.0
+    steps:
+      - checkout
+      - run:
+          name: Install Now CLI
+          command: sudo npm install --global --unsafe-perm now
+      - run:
+          name: deploy api
+          command: |
+              cd api
+              now --token $ZEIT_TOKEN -e POSTGRES_URI=@postgres-uri -e JWT_SECRET=@jwt-secret
+              now alias
+              cd ..
+      - run:
+          name: deploy frontend
+          command: |
+              cd frontend
+              now --token $ZEIT_TOKEN
+              now alias
+              cd ..
+workflows:
+  version: 2
+  ship:
+    jobs:
+      - deploy
+        filters:
+            branches:
+              only: master
