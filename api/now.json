@@ -1,0 +1,8 @@
+{
+  "alias": "api.newmodels.cloud",
+  "name": "newmodels-hn-api",
+  "env": {
+    "PORT": "8000"
+  },
+  "version": 1
+}

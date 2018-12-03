@@ -1,0 +1,31 @@
+{
+  "name": "newmodels-hn-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "baseui": "^4.4.1",
+    "he": "^1.2.0",
+    "isomorphic-fetch": "^2.2.1",
+    "moment": "^2.22.2",
+    "next": "^7.0.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "styletron-engine-atomic": "^1.0.9",
+    "styletron-react": "^4.3.6",
+    "styletron-react-core": "^1.3.3",
+    "styletron-standard": "^1.0.7",
+    "universal-url": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-define": "^1.3.0"
+  }
+}

@@ -1,0 +1,36 @@
+version: '3.3'
+
+volumes:
+  node_modules:
+services:
+  server:
+    build:
+      context: .
+    command: ['npx', 'nodemon', '--watch', '.', 'server.js']
+    depends_on:
+      - postgres
+    environment:
+      - JWT_SECRET=gritty
+      - PORT=8000
+      - POSTGRES_URI=postgres://teenageradicals:authenticitydungeon@postgres:5432/newmodels
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./:/usr/src/app
+  populate_database:
+    build:
+      context: .
+    command: ['node', 'newmodels.js']
+    depends_on:
+      - postgres
+    environment:
+      - POSTGRES_URI=postgres://teenageradicals:authenticitydungeon@postgres:5432/newmodels
+    volumes:
+      - ./:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
+  postgres:
+    image: postgres:9.5-alpine
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./:/docker-entrypoint-initdb.d
