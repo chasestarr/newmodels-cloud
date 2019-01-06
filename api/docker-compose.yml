@@ -20,7 +20,7 @@ services:
   populate_database:
     build:
       context: .
-    command: ['node', 'newmodels.js']
+    command: ['node', 'populate-database.js']
     depends_on:
       - postgres
     environment:

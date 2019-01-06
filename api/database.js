@@ -38,7 +38,7 @@ async function getPaginatedResourcesRanked(pool, page = 0) {
         LEFT OUTER JOIN votes ON votes.resource_id = resources.id
         GROUP BY resources.id
       ) y ON y.id = resources.id
-      ORDER BY (points - 1)/POW((EXTRACT(EPOCH FROM (NOW()::timestamp - resources.created_at))/3600)+2, 1.5) DESC
+      ORDER BY (points + 1)/POW((EXTRACT(EPOCH FROM (NOW()::timestamp - resources.created_at))/3600)+2, 1.5) DESC
       LIMIT $1 OFFSET $2
     `,
     values: [LIMIT, offset],
